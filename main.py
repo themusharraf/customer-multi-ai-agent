@@ -1,9 +1,10 @@
 import warnings
+
 warnings.filterwarnings('ignore')
 
 from crewai import Agent, Task, Crew
 import os
-from utils import get_openai_api_key 
+from utils import get_openai_api_key
 from tools import docs_scrape_tool
 
 # OpenAI API kalitini olish
@@ -11,7 +12,7 @@ openai_api_key = get_openai_api_key()
 
 # Muhit o'zgaruvchisini o'rnatish
 os.environ["OPENAI_API_KEY"] = openai_api_key
-os.environ["OPENAI_MODEL_NAME"] = "gpt-4o-mini" 
+os.environ["OPENAI_MODEL_NAME"] = "gpt-4o-mini"
 
 # Hozircha test uchun chiqish
 # print("CrewAI muhit sozlandi! Model:", os.environ["OPENAI_MODEL_NAME"])
@@ -90,8 +91,8 @@ quality_assurance_review = Task(
 )
 
 crew = Crew(
-    agents=[support_agent,support_quality_assurance_agent],
-    tasks=[inquiry_resolution,quality_assurance_review],
+    agents=[support_agent, support_quality_assurance_agent],
+    tasks=[inquiry_resolution, quality_assurance_review],
     verbose=True,
     memory=True,
 )
